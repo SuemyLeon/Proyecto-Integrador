@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Delicias de Antojo</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f8fb;
+    }
+
+    header {
+      background-color: #b10404;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #a10404;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 20px;
+      margin: 10px;
+      background-color: white;
+      border-radius: 10px;
+    }
+
+    h2 {
+      color: #b10404;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px;
+      width: 250px;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #b10404;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #a10404;
+    }
+
+    footer {
+      background-color: #a10404;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    .oculto {
+      display: none;
+    }
+
+    .imagen-principal {
+      width: 250px;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 10px;
+    }
+
+    .imagen-servicios {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+      margin: 20px auto;
+      border-radius: 10px;
+    }
+
+    .imagen-contacto {
+      width: 200px;
+      height: auto;
+      object-fit: cover;
+      display: block;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+
+    .texto-centro {
+      text-align: center;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+    <h1>Delicias de Antojo</h1>
+    <p>Postres dulces o picosos hasta la puerta de tu salón o casa</p>
+  </header>
+
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Productos</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#login">Acceso</a>
+    <a href="#admin">Admin</a>
+  </nav>
+
+  <section id="inicio">
+    <h2 class="texto-centro">Quiénes somos</h2>
+    <img src="LOGO.png" class="imagen-principal">
+    <p class="texto-centro"> Emprendimiento iniciado por alumnos de octavo semestre de
+      sistemas</p>
+  </section>
+
+  <section id="servicios">
+    <h2>Productos</h2>
+    <img src="Menu.png" class="imagen-servicios">
+    <ul>
+      <li>Saborines</li>
+      <li>Brownies</li>
+      <li>Gomitas</li>
+      <li>Carlotas</li>
+    </ul>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <img src="CONTACTO.jpeg" class="imagen-contacto">
+    <p>Tel: 9871176391</p>
+  </section>
+
+  <section id="login">
+    <h2>Acceso de usuarios</h2>
+
+    <input type="email" id="email" placeholder="Correo"><br>
+    <input type="password" id="password" placeholder="Contraseña"><br>
+
+    <button onclick="registrar()">Registrarse</button>
+    <button onclick="login()">Iniciar sesión</button>
+    <button onclick="logout()">Cerrar sesión</button>
+
+    <p id="estado"></p>
+  </section>
+
+  <section id="zonaPrivada" class="oculto">
+    <h2>Hacer un pedido</h2>
+
+    <input type="text" id="cliente" placeholder="Nombre completo"><br>
+    <input type="text" id="direccion" placeholder="Dirección o Salón (Ejemplo: B1)"><br>
+    <select id="producto">
+    <option value="">Selecciona un producto</option>
+    <option value="Saborin Oreo">Saborin Oreo</option>
+    <option value="Saborin Mazapan">Saborin Mazapan</option>
+    <option value="Saborin Mamut">Saborin Mamut</option>
+    <option value="Saborin Coco">Saborin Coco</option>
+    <option value="Carlota Limon">Carlota Limon</option>
+    <option value="Carlota Mango">Carlota Mango</option>
+    <option value="Manzana con Chamoy">Manzana con Chamoy</option>
+    <option value="Napolitano">Napolitano</option>
+    <option value="Brownie">Brownie</option>
+    <option value="Manguitos">Manguitos</option>
+    <option value="Panditas">Panditas</option>
+    <option value="Serpientes">Serpientes</option>
+    </select><br>
+    
+    <input type="text" id="cantidad" placeholder="Cantidad"><br>
+    <input type="date" id="fecha"><br>
+
+    <button onclick="guardarPedidos()">Realizar Pedido</button>
+  </section>
+
+  <script>
+    document.getElementById("producto2").appendChild()
+  </script>
+
+  <section>
+    <h2>Pedidos</h2>
+    <div id="listaPedidos"></div>
+  </section>
+
+  <section id="admin" class="oculto">
+
+  <h2>Panel Administrador</h2>
+
+  <h3>Agregar Producto</h3>
+
+  <select id="productoNombre">
+
+  <option value="">Selecciona un producto</option>
+
+  <option value="Saborin Oreo">Saborin Oreo</option>
+  <option value="Saborin Mazapan">Saborin Mazapan</option>
+  <option value="Saborin Mamut">Saborin Mamut</option>
+  <option value="Saborin Coco">Saborin Coco</option>
+  <option value="Carlota Limon">Carlota Limon</option>
+  <option value="Carlota Mango">Carlota Mango</option>
+  <option value="Manzana con Chamoy">Manzana con Chamoy</option>
+  <option value="Napolitano">Napolitano</option>
+  <option value="Brownie">Brownie</option>
+  <option value="Manguitos">Manguitos</option>
+  <option value="Panditas">Panditas</option>
+  <option value="Serpientes">Serpientes</option>
+
+  </select><br>
+
+  <input type="number" id="productoStock" placeholder="Stock"><br>
+
+  <button onclick="guardarProducto()">
+    Guardar Producto
+  </button>
+
+  <hr>
+
+  <h3>Agregar Inventario</h3>
+
+  <input type="text" id="insumoNombre" placeholder="Nombre del insumo"><br>
+
+  <input type="number" id="insumoCantidad" placeholder="Cantidad"><br>
+
+  <input type="text" id="insumoUnidad" placeholder="Unidad"><br>
+
+  <input type="number" id="insumoCosto" placeholder="Costo de compra"><br>
+
+  <input type="text" id="insumoProveedor" placeholder="Proveedor o tienda"><br>
+
+  <button onclick="guardarInventario()">
+  Guardar Inventario
+  </button>
+
+  <hr>
+
+  <h3>Registrar Pedido Manual</h3>
+
+  <input type="text" id="pedidoCliente" placeholder="Nombre cliente"><br>
+
+  <input type="text" id="pedidoSalon" placeholder="Dirección o Salón (Ej: B1)"><br>
+
+  <select id="pedidoProducto">
+
+  <option value="">Selecciona un producto</option>
+  <option value="Saborin Oreo">Saborin Oreo</option>
+  <option value="Saborin Mazapan">Saborin Mazapan</option>
+  <option value="Saborin Mamut">Saborin Mamut</option>
+  <option value="Saborin Coco">Saborin Coco</option>
+  <option value="Carlota Limon">Carlota Limon</option>
+  <option value="Carlota Mango">Carlota Mango</option>
+  <option value="Manzana con Chamoy">Manzana con Chamoy</option>
+  <option value="Napolitano">Napolitano</option>
+  <option value="Brownie">Brownie</option>
+  <option value="Manguitos">Manguitos</option>
+  <option value="Panditas">Panditas</option>
+  <option value="Serpientes">Serpientes</option>
+
+  </select><br>
+
+  <input type="number" id="pedidoCantidad"  placeholder="Cantidad"><br>
+
+  <input type="date" id="pedidoFecha"><br>
+
+  <button onclick="guardarPedidoManual()">
+  Guardar Pedido
+  </button>
+
+  </section>
+
+  <footer>
+    <p>© 2026 Delicias de Antojo</p>
+  </footer>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script>
+
+    // 🔴 PEGAR AQUÍ LA CONFIGURACIÓN DE FIREBASE
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBrLu1a-MvesZiUb5TiIzaHO_JzuPgqVcY",
+      authDomain: "delicias-de-antojo.firebaseapp.com",
+      projectId: "delicias-de-antojo",
+      storageBucket: "delicias-de-antojo.firebasestorage.app",
+      messagingSenderId: "573317747180",
+      appId: "1:573317747180:web:f1b6590db40f8d8b75b0c9"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // Control de sesión
+   const admins = [
+
+   "suemymukul2004@gmail.com",
+
+   "OTRO_CORREO@gmail.com"
+
+   ];
+
+   auth.onAuthStateChanged(user => {
+
+  if (user) {
+
+    document.getElementById("zonaPrivada")
+    .classList.remove("oculto");
+
+    document.getElementById("estado")
+    .innerText =
+    "Sesión iniciada: " + user.email;
+
+    // Verificar admin
+
+    if (admins.includes(user.email)) {
+
+      document.getElementById("admin")
+      .classList.remove("oculto");
+
+    } else {
+
+      document.getElementById("admin")
+      .classList.add("oculto");
+
+    }
+
+  } else {
+
+    document.getElementById("zonaPrivada")
+    .classList.add("oculto");
+
+    document.getElementById("admin")
+    .classList.add("oculto");
+
+    document.getElementById("estado")
+    .innerText =
+    "No has iniciado sesión";
+
+  }
+
+  });
+
+    // Registro
+    function registrar() {
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(() => alert("Usuario registrado"))
+        .catch(e => alert(e.message));
+    }
+
+    // Login
+    function login() {
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => alert("Bienvenido"))
+        .catch(() => alert("Error en login"));
+    }
+
+    // Logout
+    function logout() {
+      auth.signOut();
+    }
+
+    // Lista de precios
+const preciosProductos = {
+
+  "Saborin Oreo": 15,
+  "Saborin Mazapan": 15,
+  "Saborin Mamut": 15,
+  "Saborin Coco": 15,
+  "Carlota Limon": 15,
+  "Carlota Mango": 15,
+  "Manzana con Chamoy": 25,
+  "Napolitano": 30,
+  "Brownie": 25,
+  "Manguitos": 15,
+  "Panditas": 15,
+  "Serpientes": 15
+
+};
+
+
+// Guardar Pedidos
+function guardarPedidos() {
+
+  let cliente =
+  document.getElementById("cliente").value;
+
+  let direccion =
+  document.getElementById("direccion").value;
+
+  let producto =
+  document.getElementById("producto").value;
+
+  let cantidad =
+  Number(document.getElementById("cantidad").value);
+
+  let fecha =
+  document.getElementById("fecha").value;
+
+  // Obtener precio del producto
+  let precio =
+  preciosProductos[producto];
+
+  // Calcular total
+  let total =
+  precio * cantidad;
+
+  db.collection("pedidos").add({
+
+    cliente: cliente,
+    direccion: direccion,
+    producto: producto,
+    cantidad: cantidad,
+    precio: precio,
+    total: total,
+    fecha: fecha,
+    usuario: auth.currentUser.email
+
+  })
+
+  .then(() => {
+
+    alert("Pedido registrado. Total: $" + total);
+
+    cargarPedidos();
+
+  })
+
+  .catch(error => {
+
+    alert(error.message);
+
+  });
+
+}
+
+    // Mostrar citas
+    function cargarPedidos() {
+
+  db.collection("pedidos").get().then(snapshot => {
+
+    let lista =
+    document.getElementById("listaPedidos");
+
+    lista.innerHTML = "";
+
+    snapshot.forEach(doc => {
+
+      let d = doc.data();
+
+      lista.innerHTML += `
+      <p> ${d.cliente} - ${d.producto} - Cantidad: ${d.cantidad} - Total: $${d.total}
+      </p>
+      `;
+
+    });
+
+  });
+
+}
+
+    cargarPedidos();
+
+    function guardarProducto() {
+
+  let nombre =
+  document.getElementById("productoNombre").value;
+
+  let stock =
+  document.getElementById("productoStock").value;
+
+  db.collection("productos").add({
+
+    nombre: nombre,
+    stock: Number(stock)
+
+  })
+
+  .then(() => {
+
+    alert("Producto guardado");
+
+  })
+
+  .catch(error => {
+
+    alert(error.message);
+
+  });
+
+  } 
+   
+  function guardarInventario() {
+
+  let nombre =
+  document.getElementById("insumoNombre").value;
+
+  let cantidad =
+  document.getElementById("insumoCantidad").value;
+
+  let unidad =
+  document.getElementById("insumoUnidad").value;
+
+  let costo =
+  document.getElementById("insumoCosto").value;
+
+  let proveedor =
+  document.getElementById("insumoProveedor").value;
+
+  db.collection("inventario").add({
+
+    nombre: nombre,
+
+    cantidad: Number(cantidad),
+
+    unidad: unidad,
+
+    costo: Number(costo),
+
+    proveedor: proveedor,
+
+    fechaCompra: new Date()
+
+  })
+
+  .then(() => {
+
+    alert("Inventario guardado");
+
+  })
+
+  .catch(error => {
+
+    alert(error.message);
+
+  });
+
+  }
+ function guardarPedidoManual() {
+
+  let cliente =
+  document.getElementById("pedidoCliente").value;
+
+  let direccion =
+  document.getElementById("pedidoSalon").value;
+
+  let producto =
+  document.getElementById("pedidoProducto").value;
+
+  let cantidad =
+  Number(document.getElementById("pedidoCantidad").value);
+
+  let fecha =
+  document.getElementById("pedidoFecha").value;
+
+  // Obtener precio
+  let precio =
+  preciosProductos[producto];
+
+  // Calcular total
+  let total =
+  precio * cantidad;
+
+  db.collection("pedidos").add({
+
+    cliente: cliente,
+
+    direccion: direccion,
+
+    producto: producto,
+
+    cantidad: cantidad,
+
+    precio: precio,
+
+    total: total,
+
+    fecha: fecha,
+
+    tipo: "manual"
+
+  })
+
+  .then(() => {
+
+    alert("Pedido guardado. Total: $" + total);
+
+    cargarPedidos();
+
+  })
+
+  .catch(error => {
+
+    alert(error.message);
+
+  });
+
+}
+
+  </script>
+
+</body>
+
+</html>
