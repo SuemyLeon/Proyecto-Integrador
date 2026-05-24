@@ -6,107 +6,277 @@
   <title>Delicias de Antojo</title>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f4f8fb;
-    }
 
-    header {
-      background-color: #b10404;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
 
-    nav {
-      background-color: #a10404;
-      padding: 10px;
-      text-align: center;
-    }
+body{
+  background:#f4f6f9;
+}
 
-    nav a {
-      color: white;
-      margin: 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+/* HEADER */
 
-    section {
-      padding: 20px;
-      margin: 10px;
-      background-color: white;
-      border-radius: 10px;
-    }
+header{
+  background:#b10404;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
 
-    h2 {
-      color: #b10404;
-    }
+/* NAVBAR */
 
-    input {
-      padding: 8px;
-      margin: 5px;
-      width: 250px;
-    }
+nav{
+  background:#8f0303;
+  padding:15px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+}
 
-    button {
-      padding: 10px;
-      background-color: #b10404;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.3s;
+}
 
-    button:hover {
-      background-color: #a10404;
-    }
+nav a:hover{
+  color:#ffd6d6;
+}
 
-    footer {
-      background-color: #a10404;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
-    }
+/* CONTENIDO */
 
-    .oculto {
-      display: none;
-    }
+section{
+  background:white;
+  margin:20px;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
 
-    .imagen-principal {
-      width: 250px;
-      height: auto;
-      display: block;
-      margin: 20px auto;
-      border-radius: 10px;
-    }
+h2{
+  color:#b10404;
+  margin-bottom:15px;
+}
 
-    .imagen-servicios {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      display: block;
-      margin: 20px auto;
-      border-radius: 10px;
-    }
+/* INPUTS */
 
-    .imagen-contacto {
-      width: 200px;
-      height: auto;
-      object-fit: cover;
-      display: block;
-      margin: 20px 0;
-      border-radius: 10px;
-    }
+input, select{
+  width:100%;
+  max-width:400px;
+  padding:12px;
+  margin:10px 0;
+  border:1px solid #ccc;
+  border-radius:10px;
+}
 
-    .texto-centro {
-      text-align: center;
-    }
-  </style>
+/* BOTONES */
+
+button{
+  padding:12px 20px;
+  border:none;
+  border-radius:10px;
+  background:#b10404;
+  color:white;
+  cursor:pointer;
+  margin-top:10px;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#870303;
+}
+
+/* IMAGENES */
+
+.imagen-principal{
+  width:250px;
+  display:block;
+  margin:20px auto;
+}
+
+.imagen-servicios{
+  width:100%;
+  border-radius:10px;
+}
+
+.imagen-contacto{
+  width:200px;
+  border-radius:10px;
+}
+
+/* FOOTER */
+
+footer{
+  background:#8f0303;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:20px;
+}
+
+/* UTILIDADES */
+
+.oculto{
+  display:none;
+}
+
+.texto-centro{
+  text-align:center;
+}
+
+/* PANEL ADMIN */
+
+.admin-layout{
+  display:flex;
+  min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  width:250px;
+  background:#991b1b;
+  color:white;
+  padding:20px;
+}
+
+.sidebar h2{
+  color:rgb(252, 249, 249);
+  margin-bottom:30px;
+}
+
+.sidebar button{
+  width:100%;
+  margin-bottom:15px;
+  background:#fbfafa;
+  color:#8f0303
+}
+
+.sidebar button:hover{
+  background:#340303;
+}
+
+/* CONTENIDO ADMIN */
+
+.admin-content{
+  flex:1;
+  padding:20px;
+}
+
+/* TABLAS */
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:20px;
+}
+
+table th{
+  background:#b10404;
+  color:rgb(253, 252, 252);
+  padding:12px;
+}
+
+table td{
+  padding:12px;
+  border-bottom:1px solid #f7f5f5;
+}
+/* SCROLL TABLA */
+
+.tabla-scroll{
+
+  max-height:400px;
+
+  overflow-y:auto;
+
+  border-radius:10px;
+
+}
+table thead{
+
+  position:sticky;
+
+  top:0;
+
+}
+
+/* BOTON FLOTANTE */
+
+.boton-panel{
+
+  position:fixed;
+  top:20px;
+  left:20px;
+
+  z-index:9999;
+
+  width:60px;
+  height:60px;
+
+  border-radius:50%;
+
+  font-size:28px;
+
+  background:#1b0000;
+}
+
+/* PANEL ADMIN FLOTANTE */
+
+#admin{
+
+  position:fixed;
+
+  top:0;
+  left:-100%;
+
+  width:100%;
+  height:100vh;
+
+  background:#f4f6f9;
+
+  z-index:9998;
+
+  overflow:auto;
+
+  transition:0.4s;
+
+}
+
+/* PANEL ACTIVO */
+
+#admin.activo{
+
+  left:0;
+
+}
+
+/* SIDEBAR */
+
+.sidebar{
+
+  min-height:100vh;
+
+}
+</style>
 
 </head>
 
 <body>
+
+  <!-- BOTON MENU ADMIN -->
+
+<button id="abrirPanel"
+onclick="toggleAdminPanel()"
+class="boton-panel">
+
+☰
+
+</button>
 
   <header>
     <h1>Delicias de Antojo</h1>
@@ -117,8 +287,9 @@
     <a href="#inicio">Inicio</a>
     <a href="#servicios">Productos</a>
     <a href="#contacto">Contacto</a>
+    <a href="#zonaPrivada"
+       id="linkPedido" class="oculto"> Pedido </a>
     <a href="#login">Acceso</a>
-    <a href="#admin">Admin</a>
   </nav>
 
   <section id="inicio">
@@ -189,122 +360,180 @@
     document.getElementById("producto2").appendChild()
   </script>
 
-  <section>
-    <h2>Pedidos</h2>
-    <div id="listaPedidos"></div>
-  </section>
+ <section id="admin" class="oculto" style="margin:0; padding:0;">
 
-  <section id="admin" class="oculto">
+<div class="admin-layout">
 
-  <h2>Panel Administrador</h2>
+<!-- SIDEBAR -->
 
-  <h3>Agregar Producto</h3>
+<div class="sidebar">
 
-  <select id="productoNombre">
+<h2>Administrador</h2>
 
-  <option value="">Selecciona un producto</option>
+<button onclick="mostrarVista('inicioAdmin')">
+Inicio
+</button>
 
-  <option value="Saborin Oreo">Saborin Oreo</option>
-  <option value="Saborin Mazapan">Saborin Mazapan</option>
-  <option value="Saborin Mamut">Saborin Mamut</option>
-  <option value="Saborin Coco">Saborin Coco</option>
-  <option value="Carlota Limon">Carlota Limon</option>
-  <option value="Carlota Mango">Carlota Mango</option>
-  <option value="Manzana con Chamoy">Manzana con Chamoy</option>
-  <option value="Napolitano">Napolitano</option>
-  <option value="Brownie">Brownie</option>
-  <option value="Manguitos">Manguitos</option>
-  <option value="Panditas">Panditas</option>
-  <option value="Serpientes">Serpientes</option>
+<button onclick="mostrarVista('vistaProductos')">
+Productos
+</button>
 
-  </select><br>
+<button onclick="mostrarVista('vistaInventario')">
+Inventario
+</button>
 
-  <input type="number" id="productoStock" placeholder="Stock"><br>
+<button onclick="mostrarVista('dashboardPedidos')">
+Dashboard Pedidos
+</button>
 
-  <button onclick="guardarProducto()">
-    Guardar Producto
-  </button>
+<button onclick="mostrarVista('dashboardProductos')">
+Dashboard Productos
+</button>
 
-  <hr>
+<button onclick="mostrarVista('dashboardInventario')">
+Dashboard Inventario
+</button>
 
-  <h3>Agregar Inventario</h3>
+<button onclick="logout()">
+Cerrar sesión
+</button>
 
-  <input type="text" id="insumoNombre" placeholder="Nombre del insumo"><br>
+</div>
 
-  <input type="number" id="insumoCantidad" placeholder="Cantidad"><br>
+<!-- CONTENIDO -->
 
-  <input type="text" id="insumoUnidad" placeholder="Unidad"><br>
+<div class="admin-content">
 
-  <input type="number" id="insumoCosto" placeholder="Costo de compra"><br>
+<!-- INICIO ADMIN -->
 
-  <input type="text" id="insumoProveedor" placeholder="Proveedor o tienda"><br>
+<div id="inicioAdmin">
 
-  <button onclick="guardarInventario()">
-  Guardar Inventario
-  </button>
+<h2>Pedidos Registrados</h2>
 
-  <hr>
+<div class="tabla-scroll">
 
-  <h3>Registrar Pedido Manual</h3>
+<table>
 
-  <input type="text" id="pedidoCliente" placeholder="Nombre cliente"><br>
+<thead>
+<tr>
+<th>Cliente</th>
+<th>Producto</th>
+<th>Cantidad</th>
+<th>Total</th>
+</tr>
+</thead>
 
-  <input type="text" id="pedidoSalon" placeholder="Dirección o Salón (Ej: B1)"><br>
+<tbody id="tablaPedidos">
+</tbody>
 
-  <select id="pedidoProducto">
+</table> </div>
+</div>
 
-  <option value="">Selecciona un producto</option>
-  <option value="Saborin Oreo">Saborin Oreo</option>
-  <option value="Saborin Mazapan">Saborin Mazapan</option>
-  <option value="Saborin Mamut">Saborin Mamut</option>
-  <option value="Saborin Coco">Saborin Coco</option>
-  <option value="Carlota Limon">Carlota Limon</option>
-  <option value="Carlota Mango">Carlota Mango</option>
-  <option value="Manzana con Chamoy">Manzana con Chamoy</option>
-  <option value="Napolitano">Napolitano</option>
-  <option value="Brownie">Brownie</option>
-  <option value="Manguitos">Manguitos</option>
-  <option value="Panditas">Panditas</option>
-  <option value="Serpientes">Serpientes</option>
 
-  </select><br>
+<!-- VISTA PRODUCTOS -->
 
-  <input type="number" id="pedidoCantidad"  placeholder="Cantidad"><br>
+<div id="vistaProductos" class="oculto">
 
-  <input type="date" id="pedidoFecha"><br>
+<h2>Agregar Producto</h2>
 
-  <button onclick="guardarPedidoManual()">
-  Guardar Pedido
-  </button>
-  <section id="dashboard">
+<select id="productoNombre">
 
-  <h2>Dashboard de Ventas</h2>
+<option value="">Selecciona producto</option>
 
-  <iframe 
-    width="600" 
-    height="450" 
-    src="https://datastudio.google.com/embed/reporting/fba87520-0a47-40c1-a521-0ff0a2976682/page/Jq2yF" 
-    frameborder="0" 
-    style="border:0" 
-    allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
-  </iframe>
+<option value="Saborin Oreo">Saborin Oreo</option>
+<option value="Saborin Mazapan">Saborin Mazapan</option>
+<option value="Brownie">Brownie</option>
+
+</select>
+
+<input type="number"
+id="productoStock"
+placeholder="Stock">
+
+<button onclick="guardarProducto()">
+Guardar Producto
+</button>
+
+</div>
+
+<!-- VISTA INVENTARIO -->
+
+<div id="vistaInventario" class="oculto">
+
+<h2>Agregar Inventario</h2>
+
+<input type="text"
+id="insumoNombre"
+placeholder="Nombre insumo">
+
+<input type="number"
+id="insumoCantidad"
+placeholder="Cantidad">
+
+<input type="text"
+id="insumoUnidad"
+placeholder="Unidad">
+
+<input type="number"
+id="insumoCosto"
+placeholder="Costo">
+
+<input type="text"
+id="insumoProveedor"
+placeholder="Proveedor">
+
+<button onclick="guardarInventario()">
+Guardar Inventario
+</button>
+
+</div>
+
+<!-- DASHBOARD PEDIDOS -->
+
+<div id="dashboardPedidos" class="oculto">
+
+<h2>Dashboard Pedidos</h2>
+
+<iframe width="600" height="800" 
+src="https://datastudio.google.com/embed/reporting/fba87520-0a47-40c1-a521-0ff0a2976682/page/Jq2yF" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+
+</iframe>
+
+</div>
+
+<!-- DASHBOARD PRODUCTOS -->
+
+<div id="dashboardProductos" class="oculto">
+
+<h2>Dashboard Productos</h2>
+
+<iframe
+width="100%"
+height="600"
+src="TU_LINK_LOOKER_PRODUCTOS"
+frameborder="0">
+</iframe>
+
+</div>
+
+<!-- DASHBOARD INVENTARIO -->
+
+<div id="dashboardInventario" class="oculto">
+
+<h2>Dashboard Inventario</h2>
+
+<iframe
+width="100%"
+height="600"
+src="TU_LINK_LOOKER_INVENTARIO"
+frameborder="0">
+</iframe>
+
+</div>
+
+</div>
 
 </section>
-  </section>
-  <section id="dashboard">
-
-  <h2>Dashboard de Ventas</h2>
-
-  <iframe 
-    width="600" 
-    height="450" 
-    src="https://datastudio.google.com/embed/reporting/fba87520-0a47-40c1-a521-0ff0a2976682/page/Jq2yF" 
-    frameborder="0" 
-    style="border:0" 
-    allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
-  </iframe>
-  </section>
-  </section>
 
   <footer>
     <p>© 2026 Delicias de Antojo</p>
@@ -348,6 +577,9 @@
     document.getElementById("zonaPrivada")
     .classList.remove("oculto");
 
+    document.getElementById("linkPedido")
+    .classList.remove("oculto");
+
     document.getElementById("estado")
     .innerText =
     "Sesión iniciada: " + user.email;
@@ -356,13 +588,13 @@
 
     if (admins.includes(user.email)) {
 
-      document.getElementById("admin")
-      .classList.remove("oculto");
+     document.getElementById("abrirPanel")
+     .style.display = "block";
 
     } else {
 
-      document.getElementById("admin")
-      .classList.add("oculto");
+     document.getElementById("abrirPanel")
+     .style.display = "none";
 
     }
 
@@ -371,12 +603,17 @@
     document.getElementById("zonaPrivada")
     .classList.add("oculto");
 
+    document.getElementById("linkPedido")
+    .classList.add("oculto");
+
     document.getElementById("admin")
     .classList.add("oculto");
 
     document.getElementById("estado")
     .innerText =
     "No has iniciado sesión";
+    document.getElementById("abrirPanel")
+    .style.display = "none";
 
   }
 
@@ -482,22 +719,28 @@ function guardarPedidos() {
 }
 
     // Mostrar citas
-    function cargarPedidos() {
+   function cargarPedidos() {
 
   db.collection("pedidos").get().then(snapshot => {
 
-    let lista =
-    document.getElementById("listaPedidos");
+    let tabla =
+    document.getElementById("tablaPedidos");
 
-    lista.innerHTML = "";
+    tabla.innerHTML = "";
 
     snapshot.forEach(doc => {
 
       let d = doc.data();
 
-      lista.innerHTML += `
-      <p> ${d.cliente} - ${d.producto} - Cantidad: ${d.cantidad} - Total: $${d.total}
-      </p>
+      tabla.innerHTML += `
+      
+      <tr>
+        <td>${d.cliente}</td>
+        <td>${d.producto}</td>
+        <td>${d.cantidad}</td>
+        <td>$${d.total}</td>
+      </tr>
+
       `;
 
     });
@@ -505,8 +748,7 @@ function guardarPedidos() {
   });
 
 }
-
-    cargarPedidos();
+   cargarPedidos();
 
     function guardarProducto() {
 
@@ -634,16 +876,84 @@ function guardarPedidos() {
 
     cargarPedidos();
 
-  })
+    })
 
-  .catch(error => {
+    .catch(error => {
 
     alert(error.message);
+
+    });
+
+  }
+
+   function toggleAdminPanel(){
+
+  let panel =
+  document.getElementById("admin");
+
+  // Si está oculto
+  if(panel.classList.contains("oculto")){
+
+    panel.classList.remove("oculto");
+
+    setTimeout(() => {
+
+      panel.classList.add("activo");
+
+    }, 10);
+
+  }
+
+  // Si ya está abierto
+  else{
+
+    panel.classList.remove("activo");
+
+    setTimeout(() => {
+
+      panel.classList.add("oculto");
+
+    }, 400);
+
+  }
+
+} 
+
+   function mostrarVista(vista){
+
+  document.getElementById("inicioAdmin")
+  .classList.add("oculto");
+
+  document.getElementById("vistaProductos")
+  .classList.add("oculto");
+
+  document.getElementById("vistaInventario")
+  .classList.add("oculto");
+
+  document.getElementById("dashboardPedidos")
+  .classList.add("oculto");
+
+  document.getElementById("dashboardProductos")
+  .classList.add("oculto");
+
+  document.getElementById("dashboardInventario")
+  .classList.add("oculto");
+
+  document.getElementById(vista)
+  .classList.remove("oculto");
+
+  // RECARGAR IFRAMES LOOKER
+
+  let iframes =
+  document.querySelectorAll("iframe");
+
+  iframes.forEach(frame => {
+
+    frame.src = frame.src;
 
   });
 
 }
-
   </script>
 
 </body>
