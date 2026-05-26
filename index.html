@@ -272,6 +272,7 @@ table thead{
 
 <button id="abrirPanel"
 onclick="toggleAdminPanel()"
+style="display: none"
 class="boton-panel">
 
 ☰
@@ -563,12 +564,6 @@ frameborder="0">
     const auth = firebase.auth();
     const db = firebase.firestore();
 
-    // Control de sesión
-   const admins = [
-   "suemymukul2004@gmail.com",
-   "l22070017@valladolid.tecnm.mx"
-   ];
-
    auth.onAuthStateChanged(user => {
 
   if (user) {
@@ -584,18 +579,19 @@ frameborder="0">
     "Sesión iniciada: " + user.email;
 
     // Verificar admin
+    const userDoc = db.collection('usuarios').doc(user.uid);
 
-    if (admins.includes(user.email)) {
-
-     document.getElementById("abrirPanel")
-     .style.display = "block";
-
-    } else {
-
-     document.getElementById("abrirPanel")
-     .style.display = "none";
-
-    }
+    userDoc.get().then(
+        (doc) => {
+            if (doc.data()?.rol == 'admin') {
+                document.getElementById("abrirPanel")
+                .style.display = "block";
+            } else {
+                document.getElementById("abrirPanel")
+                .style.display = "none";
+            }
+        }
+    ).catch();
 
   } else {
 
