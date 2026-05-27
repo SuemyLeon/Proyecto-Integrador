@@ -272,6 +272,7 @@ table thead{
 
 <button id="abrirPanel"
 onclick="toggleAdminPanel()"
+style="display: none"
 class="boton-panel">
 
 ☰
@@ -288,7 +289,9 @@ class="boton-panel">
     <a href="#servicios">Productos</a>
     <a href="#contacto">Contacto</a>
     <a href="#zonaPrivada"
-       id="linkPedido" class="oculto"> Pedido </a>
+       id="linkPedido" 
+       class="oculto"> Pedido 
+    </a>
     <a href="#login">Acceso</a>
   </nav>
 
@@ -548,15 +551,6 @@ frameborder="0">
   <script>
 
 
-    // Control de sesión
-   const admins = [
-
-   "suemymukul2004@gmail.com",
-
-   "OTRO_CORREO@gmail.com"
-
-   ];
-
    auth.onAuthStateChanged(user => {
 
   if (user) {
@@ -572,18 +566,19 @@ frameborder="0">
     "Sesión iniciada: " + user.email;
 
     // Verificar admin
+    const userDoc = db.collection('usuarios').doc(user.uid);
 
-    if (admins.includes(user.email)) {
-
-     document.getElementById("abrirPanel")
-     .style.display = "block";
-
-    } else {
-
-     document.getElementById("abrirPanel")
-     .style.display = "none";
-
-    }
+    userDoc.get().then(
+        (doc) => {
+            if (doc.data()?.rol == 'admin') {
+                document.getElementById("abrirPanel")
+                .style.display = "block";
+            } else {
+                document.getElementById("abrirPanel")
+                .style.display = "none";
+            }
+        }
+    ).catch();
 
   } else {
 
