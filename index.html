@@ -293,6 +293,7 @@ class="boton-panel">
   </nav>
 
   <section id="inicio">
+    <div id="clima"></div>
     <h2 class="texto-centro">Quiénes somos</h2>
     <img src="LOGO.png" class="imagen-principal">
     <p class="texto-centro"> Emprendimiento iniciado por alumnos de octavo semestre de
@@ -543,23 +544,9 @@ frameborder="0">
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="firebase-config.js"></script>
   <script>
 
-    // 🔴 PEGAR AQUÍ LA CONFIGURACIÓN DE FIREBASE
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyBrLu1a-MvesZiUb5TiIzaHO_JzuPgqVcY",
-      authDomain: "delicias-de-antojo.firebaseapp.com",
-      projectId: "delicias-de-antojo",
-      storageBucket: "delicias-de-antojo.firebasestorage.app",
-      messagingSenderId: "573317747180",
-      appId: "1:573317747180:web:f1b6590db40f8d8b75b0c9"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-
-    const auth = firebase.auth();
-    const db = firebase.firestore();
 
     // Control de sesión
    const admins = [
@@ -954,6 +941,58 @@ function guardarPedidos() {
   });
 
 }
+
+async function obtenerClima(){
+
+  const apiKey = "be5aed3ba8cf5bc9309b3f60091984e8";
+
+  const ciudad = "Yucatán";
+
+  const url =
+  `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric&lang=es`;
+
+  let respuesta = await fetch(url);
+
+  let data = await respuesta.json();
+
+  let temp = data.main.temp;
+
+  let descripcion =
+  data.weather[0].description;
+
+  let recomendacion = "";
+
+  if(temp >= 30){
+
+    recomendacion =
+    "☀ Un saborin con unas gomitas con chamoy para este calor?";
+
+  } else {
+
+    recomendacion =
+    "Ya no hay tanto calor, se te antoja un brownie o una rebana de napolitano?";
+
+  }
+
+  document.getElementById("clima")
+  .innerHTML = `
+
+    <div class="kpi-card">
+
+      <h3>Clima actual</h3>
+
+      <p>${temp}°C</p>
+
+      <p>${descripcion}</p>
+
+      <p>${recomendacion}</p>
+
+    </div>
+
+  `;
+}
+
+obtenerClima();
   </script>
 
 </body>
