@@ -1107,10 +1107,11 @@ async function obtenerClima(){
 
   const apiKey = "be5aed3ba8cf5bc9309b3f60091984e8";
 
-  const ciudad = "YUCATÁN";
+  const lat = 20.6896;
+  const lon = -88.2010;
 
   const url =
-  `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric&lang=es`;
+`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=es`;
 
   let respuesta = await fetch(url);
 
@@ -1142,7 +1143,7 @@ async function obtenerClima(){
     nombrePostre = "Manzana con chamoy";
 
     recomendacion =
-    "🍫 El clima está agradable. Una manzana con chamoy sería perfecta.";
+    "El clima está agradable. Una manzana con chamoy sería perfecta.";
 
     imagen = "Manzana con chamoy.png";
 
