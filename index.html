@@ -65,13 +65,17 @@
 
    /* INPUTS */
 
-    input, select{
+    input, select, ul{
      width:100%;
      max-width:400px;
      padding:12px;
      margin:10px 0;
      border:1px solid #ccc;
      border-radius:10px;
+    }
+
+    li {
+     margin: 0 22px;
     }
 
    /* BOTONES */
@@ -421,14 +425,13 @@
        <option value="Panditas">Panditas</option>
        <option value="Serpientes">Serpientes</option>
      </select><br>
-     <input type="text" id="cantidad" placeholder="Cantidad"><br>
+     <input type="number" min=1 id="cantidad" placeholder="Cantidad">
+     <button onclick="agregarProducto()">+</button>
+     <br>
+     <ul id="lista_compra"></ul>
      <input type="date" id="fecha"><br>
      <button onclick="guardarPedidos()">Realizar Pedido</button>
    </section>
-
-   <script>
-     document.getElementById("producto2").appendChild()
-   </script>
 
    <section id="admin" class="oculto" style="margin:0; padding:0;">
      <div class="admin-layout">
@@ -589,13 +592,20 @@ frameborder="0">
   </footer>
 
   <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="firebase-config.js"></script>
+  <script 
+    src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"
+  ></script>
+  <script 
+    src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js">
+  </script>
+  <script 
+    src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js">
+  </script>
+  <script 
+    src="firebase-config.js">
+  </script>
+
   <script>
-
-
    auth.onAuthStateChanged(user => {
 
   if (user) {
@@ -689,6 +699,14 @@ const preciosProductos = {
 
 };
 
+   // Agregar al carrito
+   function agregarProducto() {
+       if (!producto.value || !cantidad.value) {return};
+        const item = document.createElement("li");
+        item.textContent = 
+        `${producto.value} - ${cantidad.value}`
+        lista_compra.appendChild(item);
+   }
 
 // Guardar Pedidos
 function guardarPedidos() {
@@ -716,23 +734,32 @@ function guardarPedidos() {
   let total =
   precio * cantidad;
 
-  db.collection("pedidos").add({
+  const venta = db.collection("ventas").doc();
+  venta.add({
 
-    cliente: cliente,
+    fecha: new Date().toLocaleString(),
+    cliente: {
+        correo: auth.currentUser.email,
+        nombre: cliente
+    },
+    fecha_entrega: fecha,
     direccion: direccion,
+    // carrito: ,
     producto: producto,
     cantidad: cantidad,
     precio: precio,
     total: total,
-    fecha: fecha,
-    usuario: auth.currentUser.email
 
+  })
+
+  .then(() => {
+      db.collection(`ventas/${venta}/carrito`).add(
+      )
   })
 
   .then(() => {
 
     alert("Pedido registrado. Total: $" + total);
-
     cargarPedidos();
 
   })
