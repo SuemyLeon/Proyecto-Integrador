@@ -415,7 +415,7 @@ table thead{
 
 }
 
-#btnClima{
+#btnClima.pendiente{
 
   animation:campana 2s infinite;
 
@@ -1098,10 +1098,22 @@ function guardarPedidos() {
 function toggleClima(){
 
   document
-  .getElementById("panelClima")
-  .classList.toggle("activo");
+    .getElementById("panelClima")
+    .classList.toggle("activo");
+
+  document
+    .getElementById("badgeClima")
+    .style.display = "none";
+
+  document
+    .getElementById("btnClima")
+    .classList.remove("pendiente");
 
 }
+
+let ultimaRecomendacion = "";
+
+let ultimaTemperatura = null;
 
 async function obtenerClima(){
 
@@ -1160,6 +1172,23 @@ async function obtenerClima(){
 
   }
 
+  let hayCambio = false;
+
+if(ultimaRecomendacion !== recomendacion){
+
+  hayCambio = true;
+
+}
+
+if(
+  ultimaTemperatura !== null &&
+  Math.abs(temp - ultimaTemperatura) >= 2
+){
+
+  hayCambio = true;
+
+}
+
   document.getElementById("contenidoClima").innerHTML = `
 
     <h4>${temp.toFixed(1)}°C - ${descripcion}</h4>
@@ -1173,17 +1202,33 @@ async function obtenerClima(){
     </h4>
 
   `;
+  if(hayCambio){
+
+  document
+    .getElementById("badgeClima")
+    .style.display = "flex";
+
+  document
+    .getElementById("btnClima")
+    .classList.add("pendiente");
+
+}
+
+ultimaRecomendacion = recomendacion;
+
+ultimaTemperatura = temp;
 
 }
 
 obtenerClima();
+setInterval(obtenerClima, 300000);
   </script>
 
 <div id="btnClima" onclick="toggleClima()">
 
   🔔
 
-  <span class="notificacion">1</span>
+  <span class="notificacion" id="badgeClima">1</span>
 
 </div>
 
