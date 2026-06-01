@@ -271,6 +271,155 @@ table thead{
   min-height:100vh;
 
 }
+
+/* BOTON FLOTANTE CLIMA */
+
+#btnClima{
+
+  position:fixed;
+
+  bottom:25px;
+  right:25px;
+
+  width:65px;
+  height:65px;
+
+  border-radius:50%;
+
+  background:#b10404;
+
+  color:white;
+
+  display:flex;
+
+  justify-content:center;
+  align-items:center;
+
+  font-size:30px;
+
+  cursor:pointer;
+
+  z-index:9999;
+
+  box-shadow:0 4px 12px rgba(0,0,0,.25);
+
+}
+
+/* NUMERO ROJO */
+
+.notificacion{
+
+  position:absolute;
+
+  top:-5px;
+  right:-5px;
+
+  background:red;
+
+  color:white;
+
+  width:24px;
+  height:24px;
+
+  border-radius:50%;
+
+  display:flex;
+
+  justify-content:center;
+  align-items:center;
+
+  font-size:13px;
+
+  font-weight:bold;
+
+}
+
+/* PANEL */
+
+#panelClima{
+
+  position:fixed;
+
+  bottom:100px;
+  right:25px;
+
+  width:350px;
+
+  background:white;
+
+  border-radius:20px;
+
+  padding:20px;
+
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+  display:none;
+
+  z-index:9999;
+
+  border-top:6px solid #b10404;
+
+}
+
+/* PANEL ACTIVO */
+
+#panelClima.activo{
+
+  display:block;
+
+}
+
+.cerrar-clima{
+
+  float:right;
+
+  background:none;
+
+  border:none;
+
+  color:#666;
+
+  font-size:18px;
+
+  cursor:pointer;
+
+}
+
+#panelClima img{
+
+  width:100%;
+
+  height:180px;
+
+  object-fit:cover;
+
+  border-radius:15px;
+
+  margin-top:10px;
+
+}
+
+@keyframes campana {
+
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.1);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+
+}
+
+#btnClima{
+
+  animation:campana 2s infinite;
+
+}
 </style>
 
 </head>
@@ -946,11 +1095,19 @@ function guardarPedidos() {
 
 }
 
+function toggleClima(){
+
+  document
+  .getElementById("panelClima")
+  .classList.toggle("activo");
+
+}
+
 async function obtenerClima(){
 
   const apiKey = "be5aed3ba8cf5bc9309b3f60091984e8";
 
-  const ciudad = "Yucatán";
+  const ciudad = "YUCATÁN";
 
   const url =
   `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric&lang=es`;
@@ -961,44 +1118,88 @@ async function obtenerClima(){
 
   let temp = data.main.temp;
 
-  let descripcion =
-  data.weather[0].description;
+  let descripcion = data.weather[0].description;
 
   let recomendacion = "";
 
+  let imagen = "";
+
+  let nombrePostre = "";
+
   if(temp >= 30){
 
-    recomendacion =
-    "☀ Un saborin con unas gomitas con chamoy para este calor?";
-
-  } else {
+    nombrePostre = "Saborín con gomitas y chamoy";
 
     recomendacion =
-    "Ya no hay tanto calor, se te antoja un brownie o una rebana de napolitano?";
+    "☀ Hace calor. Te recomendamos algo fresco y picosito.";
+
+    imagen = "Saborines.png";
 
   }
 
-  document.getElementById("clima")
-  .innerHTML = `
+  else if(temp >= 24){
 
-    <div class="kpi-card">
+    nombrePostre = "Manzana con chamoy";
 
-      <h3>Clima actual</h3>
+    recomendacion =
+    "🍫 El clima está agradable. Una manzana con chamoy sería perfecta.";
 
-      <p>${temp}°C</p>
+    imagen = "Manzana con chamoy.png";
 
-      <p>${descripcion}</p>
+  }
 
-      <p>${recomendacion}</p>
+  else{
 
-    </div>
+    nombrePostre = "Napolitano";
+
+    recomendacion =
+    "Está fresco. Se antoja una rebanada de napolitano.";
+
+    imagen = "Napolitano.png";
+
+  }
+
+  document.getElementById("contenidoClima").innerHTML = `
+
+    <h4>${temp.toFixed(1)}°C - ${descripcion}</h4>
+
+    <p>${recomendacion}</p>
+
+    <img src="${imagen}" alt="${nombrePostre}">
+
+    <h4 style="margin-top:10px;color:#b10404;">
+      ${nombrePostre}
+    </h4>
 
   `;
+
 }
 
 obtenerClima();
   </script>
 
+<div id="btnClima" onclick="toggleClima()">
+
+  🔔
+
+  <span class="notificacion">1</span>
+
+</div>
+
+<div id="panelClima">
+
+  <button class="cerrar-clima"
+          onclick="toggleClima()">
+    ✕
+  </button>
+
+  <h3>🌤 Recomendación del día</h3>
+
+  <div id="contenidoClima">
+    Cargando...
+  </div>
+
+</div>
 </body>
 
 </html>
