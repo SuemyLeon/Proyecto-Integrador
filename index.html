@@ -382,12 +382,6 @@
    <section id="servicios">
      <h2>Productos</h2>
      <img src="Menu.png" class="imagen-servicios">
-     <ul>
-       <li>Saborines</li>
-       <li>Brownies</li>
-       <li>Gomitas</li>
-       <li>Carlotas</li>
-     </ul>
    </section>
 
    <section id="contacto">
@@ -601,9 +595,6 @@ frameborder="0">
   <script 
     src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js">
   </script>
-  <script 
-    src="firebase-config.js">
-  </script>
 
   <script>
      const firebaseConfig = {
@@ -724,55 +715,45 @@ const preciosProductos = {
 
 // Guardar Pedidos
 function guardarPedidos() {
+    let total = 0;
 
-  let cliente =
-  document.getElementById("cliente").value;
+    const productos_carrito = [];
+    for (const item of lista_compra.children) {
+        const [nombre_p, cantidad_p] = item.textContent.split(" - "); 
+        const producto_carrito = {
+            nombre: nombre_p,
+            cantidad:Number(cantidad_p),
+            precio: preciosProductos[nombre_p]
+        };
+        productos_carrito.push(producto_carrito);
+        total += producto_carrito.cantidad * producto_carrito.precio;
+    }
 
-  let direccion =
-  document.getElementById("direccion").value;
+    const venta = {
+        fecha: new Date().toLocaleString(),
+        cliente: {
+            id: auth.getUid(),
+            correo: auth.currentUser.email,
+            nombre: cliente.value
+        },
+        fecha_entrega: new Date(`${fecha.value}T00:00`).toLocaleDateString(),
+        direccion: direccion.value,
+        total: total
+    };
+    console.log([productos_carrito, venta]);
 
-  let producto =
-  document.getElementById("producto").value;
+    const doc_venta = db.collection("ventas").doc();
+    doc_venta.set(venta)
 
-  let cantidad =
-  Number(document.getElementById("cantidad").value);
-
-  let fecha =
-  document.getElementById("fecha").value;
-
-  // Obtener precio del producto
-  let precio =
-  preciosProductos[producto];
-
-  // Calcular total
-  let total =
-  precio * cantidad;
-
-  const venta = db.collection("ventas").doc();
-  venta.add({
-
-    fecha: new Date().toLocaleString(),
-    cliente: {
-        correo: auth.currentUser.email,
-        nombre: cliente
-    },
-    fecha_entrega: fecha,
-    direccion: direccion,
-    // carrito: ,
-    producto: producto,
-    cantidad: cantidad,
-    precio: precio,
-    total: total,
-
-  })
+    .then(() => {
+        for (const producto_carrito of productos_carrito) {
+            db.collection(`ventas/${doc_venta.id}/carrito`)
+            .add(producto_carrito)
+            .catch(error => {console.log(error.message)});
+        }
+    })
 
   .then(() => {
-      db.collection(`ventas/${venta}/carrito`).add(
-      )
-  })
-
-  .then(() => {
-
     alert("Pedido registrado. Total: $" + total);
     cargarPedidos();
 
