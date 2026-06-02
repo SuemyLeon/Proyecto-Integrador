@@ -462,45 +462,44 @@
            <div id="inicioAdmin">
              <h2>Pedidos Registrados</h2>
              <div class="tabla-scroll">
-             <table>
-               <thead>
-                 <tr>
-                 <th>Cliente</th>
-                 <th>Producto</th>
-                 <th>Cantidad</th>
-                 <th>Total</th>
-                 </tr>
-               </thead>
-               <tbody id="tablaPedidos">
-               </tbody>
-             </table> </div>
+                <table>
+                  <thead>
+                    <tr>
+                    <th>Cliente</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tablaPedidos">
+                  </tbody>
+                </table> 
+             </div>
            </div>
 
-<!-- VISTA PRODUCTOS -->
-
-<div id="vistaProductos" class="oculto">
-
-<h2>Agregar Producto</h2>
-
-<select id="productoNombre">
-
-<option value="">Selecciona producto</option>
-
-<option value="Saborin Oreo">Saborin Oreo</option>
-<option value="Saborin Mazapan">Saborin Mazapan</option>
-<option value="Brownie">Brownie</option>
-
-</select>
-
-<input type="number"
-id="productoStock"
-placeholder="Stock">
-
-<button onclick="guardarProducto()">
-Guardar Producto
-</button>
-
-</div>
+          <!-- VISTA PRODUCTOS -->
+            <div id="vistaProductos" class="oculto">
+              <h2>Agregar Producto</h2>
+              <select id="productoNombre">
+                <option value="">Selecciona producto</option>
+                <option value="Saborin Oreo">Saborin Oreo</option>
+                <option value="Saborin Mazapan">Saborin Mazapan</option>
+                <option value="Saborin Mamut">Saborin Mamut</option>
+                <option value="Saborin Coco">Saborin Coco</option>
+                <option value="Carlota Limon">Carlota Limon</option>
+                <option value="Carlota Mango">Carlota Mango</option>
+                <option value="Manzana con Chamoy">Manzana con Chamoy</option>
+                <option value="Napolitano">Napolitano</option>
+                <option value="Brownie">Brownie</option>
+                <option value="Manguitos">Manguitos</option>
+                <option value="Panditas">Panditas</option>
+                <option value="Serpientes">Serpientes</option>
+              </select>
+              <input type="number" id="productoStock" placeholder="Stock">
+              <button onclick="guardarProducto()">
+              Guardar Producto
+              </button>
+            </div>
 
 <!-- VISTA INVENTARIO -->
 
@@ -610,7 +609,7 @@ frameborder="0">
 
       const auth = firebase.auth();
       const db = firebase.firestore();
-      
+
    auth.onAuthStateChanged(user => {
 
   if (user) {
