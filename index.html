@@ -466,8 +466,7 @@
                   <thead>
                     <tr>
                     <th>Cliente</th>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
+                    <th>Fecha</th>
                     <th>Total</th>
                     </tr>
                   </thead>
@@ -758,18 +757,12 @@ function guardarPedidos() {
 
   })
 
-  .catch(error => {
-
-    alert(error.message);
-
-  });
-
+  .catch(error => {alert(error.message);});
 }
 
-    // Mostrar citas
    function cargarPedidos() {
 
-  db.collection("pedidos").get().then(snapshot => {
+  db.collection("ventas").get().then(snapshot => {
 
     let tabla =
     document.getElementById("tablaPedidos");
@@ -783,9 +776,8 @@ function guardarPedidos() {
       tabla.innerHTML += `
       
       <tr>
-        <td>${d.cliente}</td>
-        <td>${d.producto}</td>
-        <td>${d.cantidad}</td>
+        <td>${d.cliente.nombre}</td>
+        <td>${d.fecha}</td>
         <td>$${d.total}</td>
       </tr>
 
@@ -1131,6 +1123,53 @@ ultimaTemperatura = temp;
 obtenerClima();
 setInterval(obtenerClima, 300000);
   </script>
+
+<script>
+function subirDocumento(colección, documento, sub_colección, sub_documentos) {
+
+    const docRef = db.collection(colección).doc();
+    docRef.set(documento)
+
+    .then(() => {
+        if (!sub_colección || !sub_documentos) {return;}
+        for (const sub_documento of sub_documentos) {
+            db.collection(`${colección}/${docRef.id}/${sub_colección}`)
+            .add(sub_documento)
+            .catch(error => {console.log(error.message)});
+        }
+    })
+
+    .then(() => {
+        console.log("documento subído con éxito");
+    })
+
+    .catch(error => {alert(error.message);});
+}
+
+
+function parseCSVFile() {
+    window.showOpenFilePicker()
+    .then(f => {return f[0].getFile();})
+    .then(f => {return f.text();})
+    .then(f => {parseCSVString(f);});
+}
+
+
+function parseCSVString(text) {
+    [headers, ...data] = text.split('\n');
+    headers = headers.split(',');
+    data.pop();
+    data = data.map(i => {
+        i = i.split(',');
+        let i_obj = {};
+        for (let j=0; j<headers.length; j++) {
+            i_obj[headers[j]] = i[j].trim();
+        }
+        return i_obj;
+    });
+    window.parsedCSV = data;
+}
+</script>
 
 <div id="btnClima" onclick="toggleClima()">
 
