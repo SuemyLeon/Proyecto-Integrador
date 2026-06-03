@@ -1,5 +1,4 @@
-﻿Receta,,,,Ingredientes,
-Nombre,Porciones,Producto,Tiempo-Preparacion,Nombre,Cantidad
+﻿nombre,porciones,producto,tiempo_preparacion,nombre,cantidad
 Saborines Oreo,9 pz,Saborines oreo,1 Hr,Galletas Oreo,12 pz
 ,,,,Agua,1 litro
 ,,,,Azucar,2 cucharadas
@@ -21,10 +20,8 @@ Saborines mamut,9 pz,Saborines Mamut,1 hr,Mamut,10 pz
 ,,,,Leche en polvo,10 cucharadas
 ,,,,Bolsa Saborin,9 pz
 Napolitano Entero,10 pz,Napolitano,2 hr,Huevo,12 pz
-,,,,Lechera,1 lata(375g)
-,,,,Lechera,1/2 lata(187.5g)
-,,,,Carnetion ,1 bote(360g)
-,,,,Carnetion ,1/2 bote(180g)
+,,,,Lechera,1.5 lata
+,,,,Carnetion ,1.5 bote
 ,,,,Agua,1 lata(375g)
 ,,,,Vainilla,2 cucharadas
 Carlota Limon,20 pz,Carlota Limon,1 hr,Lechera,1 lata(375g)
@@ -33,7 +30,7 @@ Carlota Limon,20 pz,Carlota Limon,1 hr,Lechera,1 lata(375g)
 ,,,,Galletas Maria,2 paquetes
 ,,,,Tapas,20 pz
 ,,,,Vasitos,20 pz
-,,,,Limon,1 taza
+,,,,Limon,12 pz
 Carlota Mango,24 pz,Carlota Mango,1 hr,Lechera,1 lata(375g)
 ,,,,Carnetion ,1 lata(360g)
 ,,,,Philadelphia,1 barra (180g)
@@ -52,6 +49,4 @@ Serpiente,15 pz,Serpientes,30 min,Serpientes,1 paquete
 Manzana Con Chamoy,4 pz, Manzana con Chamoy,30 min,Manzana,4 pz
 ,,,,Pulparindo,5 pz
 ,,,,Miguelito,10 g
-,,,,Palito,4 pz
 ,,,,Bolsa Manzana,4 pz
-,,,,Liston,2 Mt

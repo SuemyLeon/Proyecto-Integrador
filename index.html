@@ -762,7 +762,7 @@ function guardarPedidos() {
 
    function cargarPedidos() {
 
-  db.collection("ventas").get().then(snapshot => {
+  db.collection("pedidos").get().then(snapshot => {
 
     let tabla =
     document.getElementById("tablaPedidos");
@@ -776,7 +776,7 @@ function guardarPedidos() {
       tabla.innerHTML += `
       
       <tr>
-        <td>${d.cliente.nombre}</td>
+        <td>${d.cliente}</td>
         <td>${d.fecha}</td>
         <td>$${d.total}</td>
       </tr>
