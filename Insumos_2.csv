@@ -1,25 +1,24 @@
 ﻿nombre,stock,unidad_medida,precio_unitario,proveedor
-Lechera,2,lata, $36.00 ,Dunosusa
-Carnetion,2,lata, $30.00 ,Dunosusa
-Pulparindo,2,paquete 20 pz, $49.00 ,Dunosusa
-Philadelphia,2,barra, $45.00 ,Dunosusa
-Limon,2,pz, $2.00 ,Fruteria
-Mango,2,pz, $10.00 ,Fruteria
-Galleta Maria,2,paquete 1pz, $16.00 ,Dunosusa
-Galleta Oreo,2,paquete 18 pz, $12.00 ,Dunosusa
-Tapas,2,paquete 50 pz, $25.00 ,Desachables
-Vasitos,2,paquete 50 pz, $25.00 ,Desachables
-Palitos ,2,kilo, $90.00 ,Desachables
-Manzana,2,kilo, $60.00 ,Desachables
-Bolsas saborin,2,kilo, $50.00 ,Desachables
-Bolsas gomitas,2, paquete 100 pz, $35.00 ,OFE
-Mazapan,2,paquete 40 pz, $90.00 ,Dunosusa
-Coco,2,bolsa 250 g, $25.00 ,Mercado
-Mamut,2,caja 30 pz, $60.00 ,Dunosusa
-Manguitos,2,paquete 1kg, $115.00 ,Mercado libre
-Panditas,2,paquete 1kg, $90.00 ,Mercado libre
-Serpientes,2,paquete 1kg, $95.00 ,Mercado libre
-Leche en polvo,2,bolsa, $56.00 ,Dunosusa
-Azucar,2,bolsa, $30.00 ,Bodega Aurera
-Agua,2,garrafon 20lt, $12.00 ,Purificadora
-Huevo,2,reja 30 pz, $55.00 ,Fruteria
+Lechera,2,1pz, $36.00 ,Dunosusa
+Carnetion,2,1pz, $30.00 ,Dunosusa
+Pulparindo,2,20pz, $49.00 ,Dunosusa
+Philadelphia,2,1pz, $45.00 ,Dunosusa
+Limon,2,1pz, $2.00 ,Fruteria
+Mango,2,1pz, $10.00 ,Fruteria
+Galleta Maria,2,1pz, $16.00 ,Dunosusa
+Galleta Oreo,2,18pz, $12.00 ,Dunosusa
+Tapa,2,50pz, $25.00 ,Desachables
+Vasito,2,50pz, $25.00 ,Desachables
+Manzana,2,12pz, $55.00 ,Desachables
+Bolsa saborin,2,100pz, $50.00 ,Desachables
+Bolsa gomita,2,100pz, $35.00 ,OFE
+Mazapan,2,40pz, $90.00 ,Dunosusa
+Coco,2,250g, $25.00 ,Mercado
+Mamut,2,30pz, $60.00 ,Dunosusa
+Manguitos,2,1kg, $115.00 ,Mercado libre
+Panditas,2,1kg, $90.00 ,Mercado libre
+Serpientes,2,1kg, $95.00 ,Mercado libre
+Leche en polvo,2,1kg, $56.00 ,Dunosusa
+Azucar,2,500g, $30.00 ,Bodega Aurera
+Agua,2,20lt, $12.00 ,Purificadora
+Huevo,2,30pz, $55.00 ,Fruteria

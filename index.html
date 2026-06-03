@@ -738,7 +738,16 @@ function guardarPedidos() {
         direccion: direccion.value,
         total: total
     };
-    console.log([productos_carrito, venta]);
+
+    const pedido = {
+        cantidad: productos_carrito[0].cantidad,
+        cliente: cliente.value,
+        direccion: direccion.value,
+        fecha: fecha.value,
+        precio: productos_carrito[0].precio,
+        producto: productos_carrito[0].nombre,
+        total: total
+    }
 
     const doc_venta = db.collection("ventas").doc();
     doc_venta.set(venta)
@@ -753,16 +762,18 @@ function guardarPedidos() {
 
   .then(() => {
     alert("Pedido registrado. Total: $" + total);
-    cargarPedidos();
-
   })
 
   .catch(error => {alert(error.message);});
+
+    db.collection('pedidos').add(pedido)
+        .catch(error => {console.log(error.message);});
+    cargarPedidos();
 }
 
    function cargarPedidos() {
 
-  db.collection("ventas").get().then(snapshot => {
+  db.collection("pedidos").get().then(snapshot => {
 
     let tabla =
     document.getElementById("tablaPedidos");
@@ -776,7 +787,7 @@ function guardarPedidos() {
       tabla.innerHTML += `
       
       <tr>
-        <td>${d.cliente.nombre}</td>
+        <td>${d.cliente}</td>
         <td>${d.fecha}</td>
         <td>$${d.total}</td>
       </tr>
