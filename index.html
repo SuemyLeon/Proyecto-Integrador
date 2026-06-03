@@ -1039,18 +1039,18 @@ async function obtenerClima(){
 
   let nombrePostre = "";
 
-  if(temp >= 30){
+  if(temp <= 30){
 
-    nombrePostre = "Saborín con gomitas y chamoy";
+    nombrePostre = "Saborín o gomitas con chamoy";
 
     recomendacion =
-    "☀ Hace calor. Te recomendamos algo fresco y picosito.";
+    "☀ Hace calor. Te recomendamos algo fresco o picosito.";
 
     imagen = "Saborines.png";
 
   }
 
-  else if(temp >= 24){
+  else if(temp <= 25){
 
     nombrePostre = "Manzana con chamoy";
 
